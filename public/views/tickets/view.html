@@ -1,0 +1,160 @@
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Ticket Details
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li>Tickets</li>
+    <li class="active">{{ ticket.name }}</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Overview</h3>
+          <button class="btn btn-primary btn-sm pull-right" data-ng-click="showEditTicketModal()" style="margin: 6px 6px 0px 0px;">Edit details</button>
+        </div><!-- /.box-header -->
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover user-details">
+            <tr>
+              <td>Name</td>
+              <td>{{ ticket.name }}</td>
+            </tr>
+            <tr>
+              <td>Story points</td>
+              <td>{{ ticket.storyPoints }}</td>
+            </tr>
+            <tr>
+              <td style="display:table-cell; vertical-align: middle">Creator</td>
+              <td>
+                <div class="user-panel">
+                  <div class="pull-left image">
+                      <img class="img-circle" alt="Creator Avatar" ng-src="{{ ticket.creatorAvatar }}">
+                  </div>
+                  <div class="pull-left" style="margin: 15px 0px 0px 10px">
+                      <a href="/users/{{ ticket.creatorId }}">{{ ticket.creator }}</p>
+                  </div>
+                </div>
+            </tr>
+            <tr>
+              <td style="display:table-cell; vertical-align: middle">Assignee</td>
+              <td>
+                <div class="user-panel">
+                  <div class="pull-left image">
+                      <img class="img-circle" alt="Assignee Avatar" ng-src="{{ ticket.assigneeAvatar }}">
+                  </div>
+                  <div class="pull-left" style="margin: 15px 0px 0px 10px">
+                      <a href="/users/{{ ticket.assigneeId }}">{{ ticket.assignee }}</p>
+                  </div>
+                </div>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td>{{ ticket.status }}</td>
+            </tr>
+          </table>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+
+    <div class="col-xs-6">
+      <div class="box">
+          <div class="box-header">
+              <h3 class="box-title">Ticket links</h3>
+          </div><!-- /.box-header -->
+          <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
+              <tr>
+                <th>Project</th>
+                <th>Board</th>
+                <th>Sprint</th>
+                <th>Lane</th>
+              </tr>
+              <tr ng-repeat="ticketLink in ticketLinks">
+                <td>
+                  <a href="/projects/{{ ticketLink.projectId }}">
+                    {{ ticketLink.projectName }} ({{ ticketLink.projectCode}})
+                  </a>
+                </td>
+                <td>
+                  <a href="/projects/{{ ticketLink.projectId }}/boards/{{ ticketLink.boardId }}">
+                    {{ ticketLink.boardName }}
+                  </a>
+                </td>
+                <td ng-if="ticketLink.sprintName">
+                  <a href="/projects/{{ ticketLink.projectId }}/boards/{{ ticketLink.boardId }}?sprints={{ticketLink.sprintId}}">
+                    {{ ticketLink.sprintName }}
+                  </a>
+                </td>
+                <td ng-if="!ticketLink.sprintName">
+                    -
+                </td>
+                <td>
+                    {{ ticketLink.laneName }}
+                </td>
+              </tr>
+            </table>
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Description</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <div text-angular data-ng-model="ticket.description" data-ng-blur="deactivateEditor(ticket)" data-ng-click="activateEditor()"></div>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <!-- Chat box -->
+      <div class="box">
+        <div class="box-header">
+          <i class="fa fa-comments-o"></i>
+          <h3 class="box-title">Comments</h3>
+        </div>
+        <div class="box-body chat" id="chat-box">
+          <!-- chat item -->
+          <div class="item" ng-repeat="comment in comments">
+            <img ng-src="{{ comment.userAvatar }}" alt="user image" class="online"/>
+            <p class="message">
+              <a href="/users/{{ comment.userId }}" class="name">
+                <small class="text-muted pull-right"><i class="fa fa-clock-o"></i>{{ comment.createdAt }}</small>
+                {{ comment.user }}
+              </a>
+              <span>
+                {{ comment.text }}
+              </span>
+            </p>
+          </div><!-- /.item -->
+          <span ng-if="comments.length == 0">No comments attached</span>
+        </div><!-- /.chat -->
+        <div class="box-footer">
+          <div class="input-group">
+            <input class="form-control" placeholder="Type message..." data-ng-model="comment.text"/>
+            <div class="input-group-btn">
+              <button class="btn btn-success" data-ng-click="saveComment(comment)"><i class="fa fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.box (chat box) -->
+
+    </div>
+  </div>
+
+</section><!-- /.content -->

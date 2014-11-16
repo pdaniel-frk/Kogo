@@ -1,0 +1,162 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+      Planning view
+  </h1>
+  <ol class="breadcrumb">
+    <li><i class="fa fa-dashboard"></i> Dashboard</li>
+    <li class="active">Planning</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" ng-click="hideAlert('.content .alert')">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+    </button>
+    <span class="message">
+      <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </span>
+  </div>
+
+  <!-- Main row -->
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-hs">
+        <div class="box-header">
+          <h3 class="box-title">
+              Tickets selector:
+          </h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-hover text-center">
+            <tr>
+              <th></th>
+              <th>From</th>
+              <th>To</th>
+            </tr>
+            <tr>
+              <td>Project</td>
+              <td>
+                <select data-ng-model="sourceProjectSelector" ng-change="limitSourceBoards(sourceProjectSelector)" class="form-control" style="margin: 0px auto; width: 150px;">
+                  <option ng-repeat="project in projects" value="{{ project.id }}">{{ project.name }}</option>
+                </select>
+              </td>
+              <td>
+                <select data-ng-model="targetProjectSelector" ng-change="limitTargetBoards(targetProjectSelector)" class="form-control" style="margin: 0px auto; width: 150px;">
+                  <option ng-repeat="project in projects" value="{{ project.id }}">{{ project.name }}</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Board</td>
+              <td>
+                <select data-ng-model="sourceBoardSelector" ng-change="limitSourceSprints(sourceBoardSelector)" class="form-control" style="margin: 0px auto; width: 150px;">
+                  <option ng-repeat="board in sourceBoardOptions" value="{{ board.id }}">{{ board.name }}</option>
+                </select>
+              </td>
+              <td>
+                <select data-ng-model="targetBoardSelector" ng-change="limitTargetSprints(targetBoardSelector)" class="form-control" style="margin: 0px auto; width: 150px;">
+                  <option ng-repeat="board in targetBoardOptions" value="{{ board.id }}">{{ board.name }}</option>
+                </select>
+              </td>
+            <tr>
+              <td>Sprint</td>
+              <td>
+                <select data-ng-model="sourceSprintSelector" class="form-control" style="margin: 0px auto; width: 150px;">
+                  <option ng-repeat="sprint in sourceSprintOptions" value="{{ sprint.id }}">{{ sprint.name }}</option>
+                </select>
+              </td>
+              <td>
+                <select data-ng-model="targetSprintSelector" class="form-control" style="margin: 0px auto; width: 150px;">
+                  <option ng-repeat="sprint in targetSprintOptions" value="{{ sprint.id }}">{{ sprint.name }}</option>
+                </select>
+              </td>
+            </tr>
+
+            </tr>
+              <td colspan="3" class="text-center">
+                <button ng-click="filter(sourceProjectSelector, sourceBoardSelector, sourceSprintSelector, targetProjectSelector, targetBoardSelector, targetSprintSelector)" class="btn btn-primary btn-hs-green">Select</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Main row -->
+  <div class="row">
+    <!-- Main col -->
+    <section class="col-lg-6">
+
+      <!-- Info box -->
+      <div class="box box-solid box-primary">
+        <div class="box-header bg-hs-green">
+          <h3 class="box-title">
+            From:
+          </h3>
+        </div>
+        <div class="box-body connectedSortable" sortable id="lane-{{ lane.id }}">
+          <div class="box-body chat ticket" id="ticket-{{ ticket.id }}" ng-repeat="ticket in sourceTickets track by ticket.id">
+            <!-- ticket -->
+            <div class="item box-header">
+              <img ng-src="{{ ticket.assignee.avatar }}" alt="user image" class="online"/>
+              <p class="message">
+                <a href="/tickets/{{ ticket.id }}" class="name">
+                  <span class="badge pull-right bg-hs-green">{{ ticket.storyPoints }}</span>
+                  {{ ticket.id }}
+                </a>
+                <span>
+                  {{ ticket.name }}
+                </span>
+              </p>
+            </div><!-- /.ticket -->
+          </div><!-- /.chat -->
+        </div><!-- /.box-body -->
+        <div class="box-footer">
+
+        </div><!-- /.box-footer-->
+      </div><!-- /.box -->
+
+    </section><!-- /.Main col -->
+
+    <section class="col-lg-6">
+
+      <!-- Info box -->
+      <div class="box box-solid box-primary">
+        <div class="box-header bg-hs-green">
+          <h3 class="box-title">
+            To:
+          </h3>
+        </div>
+        <div class="box-body connectedSortable" sortable id="lane-{{ lane.id }}">
+          <div class="box-body chat ticket" id="ticket-{{ ticket.id }}" ng-repeat="ticket in targetTickets track by ticket.id">
+            <!-- ticket -->
+            <div class="item box-header">
+              <img ng-src="{{ ticket.assignee.avatar }}" alt="user image" class="online"/>
+              <p class="message">
+                <a href="/tickets/{{ ticket.id }}" class="name">
+                  <span class="badge pull-right bg-hs-green">{{ ticket.storyPoints }}</span>
+                  {{ ticket.id }}
+                </a>
+                <span>
+                  {{ ticket.name }}
+                </span>
+              </p>
+            </div><!-- /.ticket -->
+          </div><!-- /.chat -->
+        </div><!-- /.box-body -->
+        <div class="box-footer">
+
+        </div><!-- /.box-footer-->
+      </div><!-- /.box -->
+
+    </section><!-- /.Main col -->
+  </div><!-- /.row (main row) -->
+
+</section><!-- /.content -->
+

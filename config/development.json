@@ -1,0 +1,22 @@
+{
+  "express": {
+    "port": 3002
+  },
+  "logger" : {
+    "console" : false,
+    "filename": "logs/run.log",
+    "level": "silly",
+    "format": "dev"
+  },
+  "cerberus-api": {
+    "host": "localhost",
+    "port": 3001,
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  },
+  "session": {
+    "host": "localhost",
+    "port": 6379
+  }
+}

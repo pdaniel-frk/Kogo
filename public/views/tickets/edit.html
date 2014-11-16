@@ -1,0 +1,47 @@
+
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Edit Ticket</h4>
+  </div>
+  <div class="modal-body">
+
+    <form role="form">
+
+      <div class="form-group">
+          <label>Name</label>
+          <input type="text" required class="form-control" placeholder="Name" data-ng-model="modalTicket.name"/>
+      </div>
+
+      <div class="form-group">
+          <label>Description</label>
+
+          <div text-angular required placeholder="Description" data-ng-model="modalTicket.description" data-ng-blur="deactivateEditor()" data-ng-click="activateEditor()"></div>
+      </div>
+
+      <div class="form-group">
+          <label>Story Points</label>
+          <input type="text" ng-pattern="/^[0-9]*$/" class="form-control" placeholder="Story Points" data-ng-model="modalTicket.storyPoints"/>
+      </div>
+
+      <div class="form-group">
+        <label>Assignee</label>
+        <ui-select required data-ng-model="modalTicket.assignee" theme="select2" ng-disabled="disabled" style="margin: 0px 0px; width: 100%;">
+          <ui-select-match placeholder="Select assignee">{{$select.selected.username}}</ui-select-match>
+          <ui-select-choices repeat="modalUser in modalUsers | propsFilter: {username: $select.search, firstName: $select.search, lastName: $select.search, email: $select.search}">
+            <div ng-bind-html="modalUser.name | highlight: $select.search"></div>
+            <small>
+              Username: {{ modalUser.username }} <br/>
+              Name: {{ modalUser.firstName }} <br/>
+              Surname: {{ modalUser.lastName }} <br/>
+              Email: <span ng-bind-html="''+modalUser.email | highlight: $select.search"></span>
+            </small>
+          </ui-select-choices>
+        </ui-select>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" ng-click="update(modalTicket)">Save</button>
+  </div>
+</div><!-- /.modal-content -->

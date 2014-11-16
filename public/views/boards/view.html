@@ -1,0 +1,127 @@
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Board view
+  </h1>
+  <ol class="breadcrumb">
+      <li><i class="fa fa-dashboard"></i> Dashboard</li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/">Projects</a></li>
+      <li><a href="/projects/{{ projectId }}">{{ project.name }}</a></li>
+      <li class="active">{{ board.name }}</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" ng-click="hideAlert('.content .alert')">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+    </button>
+    <span class="message">
+      <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </span>
+  </div>
+
+  <!-- Main row -->
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="box box-hs">
+        <div class="box-header">
+          <h3 class="box-title">
+            Quick filters:
+          </h3>
+        </div>
+        <div class="box-body">
+          <form method="post">
+
+            <span id="sprintsSelector">
+              Sprints
+              <ui-select multiple ng-model="filters.sprints" theme="select2" ng-disabled="disabled" style="margin: 0px 10px; width: 300px;">
+                <ui-select-match placeholder="Select sprints">{{$item.name}}</ui-select-match>
+                <ui-select-choices repeat="sprint in sprints | propsFilter: {name: $select.search}">
+                  <div ng-bind-html="sprint.name | highlight: $select.search"></div>
+                  <small>
+                    <span ng-bind-html="''+sprint.name | highlight: $select.search"></span>
+                  </small>
+                </ui-select-choices>
+              </ui-select>
+            </span>
+
+            <span id="assigneesSelector">
+              Assignee:
+              <ui-select multiple ng-model="filters.assignees" theme="select2" ng-disabled="disabled" style="margin: 0px 10px; width: 300px;">
+                <ui-select-match placeholder="Select assignees">{{$item.username}}</ui-select-match>
+                <ui-select-choices repeat="user in users | propsFilter: {username: $select.search, firstName: $select.search, lastName: $select.search, email: $select.search}">
+                  <div ng-bind-html="user.name | highlight: $select.search"></div>
+                  <small>
+                    Username: <span ng-bind-html="''+user.username | highlight: $select.search"></span><br/>
+                    Name: <span ng-bind-html="''+user.firstName | highlight: $select.search"></span><br/>
+                    Surname: <span ng-bind-html="''+user.lastName | highlight: $select.search"></span><br/>
+                    Email: <span ng-bind-html="''+user.email | highlight: $select.search"></span>
+                  </small>
+                </ui-select-choices>
+              </ui-select>
+            </span>
+
+            <button ng-click="filter(filters.sprints, assignees)" class="btn btn-primary btn-hs-green btn-filter">Filter</button>
+
+            <button data-ng-click="showCreateTicketModal()" id="showCreateTicketModalButton" class="btn btn-primary btn-hs-green pull-right">Create ticket</button>
+
+            <button ng-click="showCreateSprintModal()" id="showCreateSprintModalButton" class="btn btn-primary btn-hs-green pull-right" style="margin-right: 5px;">Create sprint</button>
+
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Main row -->
+  <div class="row">
+    <!-- Main col -->
+    <section class="col-lg-1 one-of-{{ _.size(lanes) }} section-container" ng-repeat="lane in lanes track by lane.id">
+
+      <!-- Info box -->
+      <div class="box box-solid box-primary">
+        <div class="box-header bg-hs-green">
+          <h3 class="box-title">
+            {{ lane.name }}
+          </h3>
+          <span class="badge pull-right bg-hs-invert-green" style="margin: 12px 30px;">{{ lane.storyPoints }}</span>
+        </div>
+        <div class="box-body connectedSortable" sortable id="lane-{{ lane.id }}">
+          <div class="box-body chat ticket" id="ticket-{{ ticket.id }}" ng-repeat="ticket in lane.tickets track by ticket.id">
+            <!-- ticket -->
+            <div class="item box-header">
+              <img ng-src="{{ ticket.assignee.avatar }}" alt="user image" class="online"/>
+              <p class="message">
+                <a href="/tickets/{{ project.code }}-{{ ticket.id }}" class="name">
+                  <span class="badge pull-right bg-hs-green">{{ ticket.storyPoints }}</span>
+                  {{ project.code }}-{{ ticket.id }}
+                </a>
+                <span>
+                  {{ ticket.name }}
+                </span>
+              </p>
+            </div><!-- /.ticket -->
+          </div><!-- /.chat -->
+        </div><!-- /.box-body -->
+        <div class="box-footer">
+
+        </div><!-- /.box-footer-->
+      </div><!-- /.box -->
+    </section><!-- /.Main col -->
+    <section class="col-lg-12" data-ng-if="lanes.length == 0">
+      <div class="box box-solid box-primary text-center">
+        <div class="box-body">
+          No lanes added
+        </div>
+      </div>
+    </section>
+  </div><!-- /.row (main row) -->
+
+</section><!-- /.content -->
+

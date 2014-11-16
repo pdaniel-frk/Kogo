@@ -1,0 +1,57 @@
+
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Add Sprint</h4>
+  </div>
+  <div class="modal-body">
+
+    <form role="form">
+
+      <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" placeholder="Name" data-ng-model="modalSprint.name"/>
+      </div>
+
+      <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" rows="5" placeholder="Description" data-ng-model="modalSprint.description"></textarea>
+      </div>
+
+      <div class="form-group">
+          <label>Start date</label>
+          <mac-datepicker class="form-control" id="input-start-date" mac-datepicker-date-format="dd-mm-yy" data-ng-model="modalSprint.startDate" placeholder="Start date"></mac-datepicker>
+      </div>
+
+      <div class="form-group">
+          <label>End date</label>
+          <mac-datepicker class="form-control" id="input-end-date" mac-datepicker-date-format="dd-mm-yy" data-ng-model="modalSprint.endDate" placeholder="End date"></mac-datepicker>
+      </div>
+
+      <div class="form-group">
+          <label>Status</label>
+          <select class="form-control" data-ng-model="modalSprint.status">
+              <option value="pending">pending</option>
+              <option value="active">active</option>
+              <option value="inactive">inactive</option>
+              <option value="suspended">suspended</option>
+              <option value="deleted">deleted</option>
+          </select>
+      </div>
+
+      <div class="form-group">
+          <label>Board</label><br/>
+          <select data-ng-model="modalSprint.boardId" class="form-control">
+            <option ng-selected="{{ modalBoard.id == modalBoardId }}"
+                    ng-repeat="modalBoard in modalBoards"
+                    value="{{ modalBoard.id }}">
+              {{ modalBoard.name }}
+            </option>
+          </select>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" id="cancelButton" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" id="createSprintButton" ng-click="create(modalSprint)">Create Sprint</button>
+  </div>
+</div><!-- /.modal-content -->

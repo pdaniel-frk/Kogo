@@ -1,0 +1,70 @@
+
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Add Ticket</h4>
+  </div>
+  <div class="modal-body">
+
+    <form role="form">
+
+      <div class="form-group" id="name-form-group">
+          <label>Name</label>
+          <input type="text" required class="form-control" placeholder="Name" data-ng-model="modalTicket.name"/>
+      </div>
+
+      <div class="form-group" id="description-form-group">
+          <label>Description</label>
+
+          <div text-angular required placeholder="Description" data-ng-model="modalTicket.description" data-ng-blur="deactivateEditor()" data-ng-click="activateEditor()"></div>
+      </div>
+
+      <div class="form-group" id="storypoints-form-group">
+          <label>Story Points</label>
+          <input type="text" ng-pattern="/^[0-9]*$/" class="form-control" placeholder="Story Points" data-ng-model="modalTicket.storyPoints"/>
+      </div>
+
+      <div class="form-group" id="assignee-form-group">
+        <label>Assignee</label>
+        <ui-select data-ng-model="modalTicket.assignee" theme="select2" ng-disabled="disabled" style="margin: 0px 0px; width: 100%;">
+          <ui-select-match placeholder="Select assignee">{{$select.selected.username}}</ui-select-match>
+          <ui-select-choices repeat="modalUser in modalUsers | propsFilter: {username: $select.search, firstName: $select.search, lastName: $select.search, email: $select.search}">
+            <div ng-bind-html="modalUser.name | highlight: $select.search"></div>
+            <small>
+              Username: <span ng-bind-html="''+modalUser.username | highlight: $select.search"></span><br/>
+              Name: <span ng-bind-html="''+modalUser.firstName | highlight: $select.search"></span><br/>
+              Surname: <span ng-bind-html="''+modalUser.lastName | highlight: $select.search"></span><br/>
+              Email: <span ng-bind-html="''+modalUser.email | highlight: $select.search"></span>
+            </small>
+          </ui-select-choices>
+        </ui-select>
+      </div>
+
+      <div class="form-group" id="sprint-form-group">
+        <label>Sprint</label>
+        <ui-select data-ng-model="modalTicket.sprint" theme="select2" ng-disabled="disabled" style="margin: 0px 0px; width: 100%;">
+          <ui-select-match placeholder="Select sprint">{{$select.selected.name}}</ui-select-match>
+          <ui-select-choices repeat="modalSprint in modalSprints | propsFilter: {name: $select.search, startDate: $select.search, endDate: $select.search}">
+            <div ng-bind-html="modalSprint.name | highlight: $select.search"></div>
+            <small>
+              Name: <span ng-bind-html="''+modalSprint.name | highlight: $select.search"></span><br/>
+              Start date: <span ng-bind-html="''+modalSprint.startDate | highlight: $select.search"></span><br/>
+              End: <span ng-bind-html="''+modalSprint.endDate | highlight: $select.search"></span>
+            </small>
+          </ui-select-choices>
+        </ui-select>
+      </div>
+
+      <div class="form-group" id="lane-form-group">
+        <label>Lane</label>
+        <select class="form-control" data-ng-model="modalTicket.laneId">
+          <option data-ng-repeat="modalLane in modalLanes" value="{{ modalLane.id }}">{{ modalLane.name }}</option>
+        </select>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" id="cancelButton" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" id="createTicketButton" ng-click="create(modalTicket)">Create Ticket</button>
+  </div>
+</div><!-- /.modal-content -->

@@ -1,0 +1,51 @@
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Dashboard
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Main row -->
+    <div class="row">
+        <!-- Main col -->
+        <section class="col-lg-12 connectedSortable" sortable>
+
+            <!-- Activity Feed box -->
+            <div class="box box-solid">
+                <div class="box-header">
+                    <i class="fa fa-comments-o"></i>
+                    <h3 class="box-title">Activity Feed</h3>
+                </div>
+                <div class="box-body chat" id="chat-box">
+                    <!-- chat item -->
+                    <div class="item" ng-repeat="activity in ticketActivities">
+                        <img ng-src="{{ activity.userAvatar }}" alt="user image" class="online"/>
+                        <p class="message">
+                            <a href="/users/{{ activity.userId }}" class="name">
+                                <small class="text-muted pull-right"><i class="fa fa-clock-o"></i>{{ activity.createdAt }}</small>
+                                {{ activity.user }}
+                            </a>
+                            <span ng-if="activity.type == 1">
+                                Created ticket "{{ activity.ticket }}"
+                            </span>
+                            <span ng-if="activity.type == 2">
+                                Changed "{{ activity.field}}" of ticket "{{ activity.ticket }}" to "{{ activity.newValue }}"
+                            </span>
+                        </p>
+                    </div><!-- /.item -->
+                </div><!-- /.chat -->
+            </div><!-- /.box (Activity Feed box) -->
+
+        </section><!-- /.Main col -->
+    </div><!-- /.row (main row) -->
+
+</section><!-- /.content -->
+

@@ -71,7 +71,7 @@ Install all project's dependencies:
 npm install
 ```
 
-modify /config/production.json config file contain correct database details:
+modify /config/app.json config file contain correct database details:
 mysql->host
 mysql->user
 mysql->password
@@ -79,7 +79,13 @@ mysql->password
 setup database:
 
 ```
-export NODE_ENV=production && node build/setupDb.js
+export NODE_ENV=app && node build/setupDb.js
+```
+
+create logs directory:
+
+```
+mkdir logs
 ```
 
 and start node server:
@@ -107,6 +113,12 @@ Install all bower's dependencies:
 
 ```
 bower install
+```
+
+create logs directory:
+
+```
+mkdir logs
 ```
 
 and start node server:

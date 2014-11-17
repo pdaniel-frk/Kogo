@@ -23,7 +23,7 @@ module.exports = function (grunt) {
 
     shell : {
       prepareDatabase : {
-        command: 'export NODE_ENV=development && node ../cerberus-api/build/setupDb.js test-sql'
+        command: 'export NODE_ENV=test && node ../cerberus-api/build/setupDb.js test-sql'
       },
       runProtractor : {
         command: 'protractor test/protractor/config.js'

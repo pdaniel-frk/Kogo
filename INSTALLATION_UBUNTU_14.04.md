@@ -80,6 +80,9 @@ setup database:
 
 ```
 export NODE_ENV=app && node build/setupDb.js
+
+// or export NODE_ENV=app && node build/setupDb.js test-sql
+// to init project with sample data
 ```
 
 create logs directory:
@@ -95,7 +98,7 @@ node app.js
 ```
 
 Setting up Kogo App
------------------------
+-------------------
 
 Install all project's dependencies:
 
@@ -125,6 +128,49 @@ and start node server:
 
 ```
 export NODE_ENV=production && node app.js
+```
+
+Setting up KogoAdmin App
+------------------------
+
+Install all project's dependencies:
+
+```
+npm install
+```
+
+Install all bower's dependencies:
+
+```
+bower install
+```
+
+create logs directory:
+
+```
+mkdir logs
+```
+
+and start node server:
+
+```
+export NODE_ENV=production && node app.js
+```
+
+Symlink static assets of Kogo & KogoAdmin
+-----------------------------------------
+
+Inside Kogo root directory:
+
+```
+mkdir -p public/images/avatars
+```
+
+Inside KogoAdmin root directory:
+
+```
+cd public/images
+ln -s ./../../../kogo/public/images/avatars avatars
 ```
 
 Ngnix installation

@@ -146,7 +146,7 @@ module.exports = function (router, passport) {
 
   router.get('/logout', function (req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/login');
   });
 
   // load the single view file

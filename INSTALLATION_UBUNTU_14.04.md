@@ -160,12 +160,6 @@ export NODE_ENV=production && node app.js
 Symlink static assets of Kogo & KogoAdmin
 -----------------------------------------
 
-Inside Kogo root directory:
-
-```
-mkdir -p public/images/avatars
-```
-
 Inside KogoAdmin root directory:
 
 ```

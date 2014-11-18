@@ -130,6 +130,8 @@ export NODE_ENV=production && node app.js
 Ngnix installation
 ------------------
 
+Note: Nginx is used as a proxy to serve static files or forward requests upstream to Node.js. Node.js also implements fallback mechanism to serve static files just in case if Nginx wouldn't be setup. This means that for quick checks you can skip this step and use localhost:PORT combination(default port for Kogo is 3002, KogoAdmin - 3003).
+
 ```
 sudo apt-get install nginx
 ```

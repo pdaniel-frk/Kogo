@@ -40,5 +40,14 @@
   "session": {
     "host": "localhost",
     "port": 6379
+  },
+  "mysql": {
+    "user": "root",
+    "password": "root",
+    "host":  "localhost",
+    "port": 3306,
+    "database": "cerberus_test",
+    "multipleStatements": true,
+    "timezone": "0000"
   }
 }

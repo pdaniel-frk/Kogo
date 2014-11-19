@@ -30,13 +30,16 @@ Kogo is Agile/Kanban Project Management Tool. It provides an feature rich interf
 Screenshots
 -----------
 
-Board view
+**Board view**
+
 ![Board view](https://dl.dropboxusercontent.com/u/72445855/Kogo/board_view.png)
 
-Ticket view
+**Ticket view**
+
 ![Ticket view](https://dl.dropboxusercontent.com/u/72445855/Kogo/ticket_view.png)
 
-Architecture overview
+**Architecture overview**
+
 ![Architecture overview](https://dl.dropboxusercontent.com/u/72445855/Kogo/architecture.png)
 
 Installation guides

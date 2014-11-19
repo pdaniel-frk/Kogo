@@ -101,7 +101,7 @@ mkdir logs
 and start node server(using Node.js' forever module):
 
 ```
-forver start app.js
+forever -o logs/forever.js start app.js
 ```
 
 Setting up Kogo App
@@ -128,7 +128,7 @@ mkdir logs
 and start node server:
 
 ```
-forever start app.js
+forever -o logs/forever.js start app.js
 ```
 
 Setting up KogoAdmin App
@@ -155,7 +155,7 @@ mkdir logs
 and start node server:
 
 ```
-forever start app.js
+forever -o logs/forever.js start app.js
 ```
 
 Symlinking static assets of Kogo & KogoAdmin

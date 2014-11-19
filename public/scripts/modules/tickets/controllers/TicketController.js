@@ -127,7 +127,7 @@ ticketsController.controller(
       $scope.showEditTicketModal = function (modalSelector) {
 
         var modalInstance = $modal.open({
-          templateUrl: 'views/tickets/edit.html',
+          templateUrl: 'static/views/tickets/edit.html',
           controller: 'TicketModalController',
           backdrop: 'static',
           resolve: {

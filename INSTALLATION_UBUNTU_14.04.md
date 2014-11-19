@@ -33,6 +33,13 @@ check the installation:
 node --version
 ```
 
+Node.js' global modules installation
+------------------------------------
+
+```
+sudo npm install -g bower forever
+```
+
 Git installation
 ----------------
 
@@ -91,10 +98,10 @@ create logs directory:
 mkdir logs
 ```
 
-and start node server:
+and start node server(using Node.js' forever module):
 
 ```
-node app.js
+forever -o logs/forever.js start app.js
 ```
 
 Setting up Kogo App
@@ -104,12 +111,6 @@ Install all project's dependencies:
 
 ```
 npm install
-```
-
-Install bower package:
-
-```
-sudo npm install -g bower
 ```
 
 Install all bower's dependencies:
@@ -127,7 +128,7 @@ mkdir logs
 and start node server:
 
 ```
-export NODE_ENV=production && node app.js
+forever -o logs/forever.js start app.js
 ```
 
 Setting up KogoAdmin App
@@ -154,11 +155,11 @@ mkdir logs
 and start node server:
 
 ```
-export NODE_ENV=production && node app.js
+forever -o logs/forever.js start app.js
 ```
 
-Symlink static assets of Kogo & KogoAdmin
------------------------------------------
+Symlinking static assets of Kogo & KogoAdmin
+--------------------------------------------
 
 Inside KogoAdmin root directory:
 

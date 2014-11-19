@@ -25,14 +25,22 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 About
 -----
 
-Kogo is Agile Project Management Tool. It provides an interface enabling user to maintain Agile boards, tickets and users. Kogo doesn't contain any business logic on it's own - everything is handled on REST API (Cerberus API) side.
+Kogo is Agile/Kanban Project Management Tool. It provides an feature rich interface that enables users to create and maintain Agile boards, sprints, tickets and users. Kogo
 
 Screenshots
 -----------
 
+**Board view**
+
 ![Board view](https://dl.dropboxusercontent.com/u/72445855/Kogo/board_view.png)
 
+**Ticket view**
+
 ![Ticket view](https://dl.dropboxusercontent.com/u/72445855/Kogo/ticket_view.png)
+
+**Architecture overview**
+
+![Architecture overview](https://dl.dropboxusercontent.com/u/72445855/Kogo/architecture.png)
 
 Installation guides
 -------------------

@@ -285,7 +285,7 @@ boardController.controller(
       $scope.showCreateSprintModal = function (modalSelector) {
 
         var modalInstance = $modal.open({
-          templateUrl: 'views/sprints/create.html',
+          templateUrl: 'static/views/sprints/create.html',
           controller: 'SprintModalController',
           backdrop: 'static',
           resolve: {
@@ -316,7 +316,7 @@ boardController.controller(
       $scope.showCreateTicketModal = function () {
 
         var modalInstance = $modal.open({
-          templateUrl: 'views/tickets/create.html',
+          templateUrl: 'static/views/tickets/create.html',
           controller: 'TicketModalController',
           backdrop: 'static',
           resolve: {

@@ -22,14 +22,14 @@ describe('Kogo login screen', function () {
 
     expect(element(by.model('form.username')).isPresent()).toBe(true);
     expect(element(by.model('form.password')).isPresent()).toBe(true);
-    expect(element(by.css('form button')).isPresent()).toBe(true);
+    expect(element(by.css('form .footer button')).isPresent()).toBe(true);
   });
 
   it ('should allow to login with correct details', function () {
 
     element(by.model('form.username')).sendKeys('dahlberg.reindl');
     element(by.model('form.password')).sendKeys('abc');
-    element(by.css('form button')).click();
+    element(by.css('form .footer button')).click();
 
     expect(browser.getTitle()).toEqual('Kogo | Dashboard');
   });

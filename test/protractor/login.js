@@ -25,7 +25,22 @@ describe('Kogo login screen', function () {
     expect(element(by.css('form .footer button')).isPresent()).toBe(true);
   });
 
+  it ('shouldn\'t allow to login with incorrect details', function () {
+
+    element(by.model('form.username')).sendKeys('incorrect');
+    element(by.model('form.password')).sendKeys('incorrect');
+    element(by.css('form .footer button')).click();
+
+    expect(browser.getTitle()).toEqual('Kogo | Log in');
+
+    // error message should be displayed
+    expect(element(by.css('form .alert')).isPresent()).toBe(true);
+  });
+
   it ('should allow to login with correct details', function () {
+
+    element(by.model('form.username')).clear();
+    element(by.model('form.password')).clear();
 
     element(by.model('form.username')).sendKeys('dahlberg.reindl');
     element(by.model('form.password')).sendKeys('abc');
@@ -33,13 +48,4 @@ describe('Kogo login screen', function () {
 
     expect(browser.getTitle()).toEqual('Kogo | Dashboard');
   });
-
-  // it ('shouldn\'t allow to login with incorrect details', function () {
-
-  //   element(by.model('form.username')).sendKeys('incorrect');
-  //   element(by.model('form.password')).sendKeys('incorrect');
-  //   element(by.css('form button')).click();
-
-  //   expect(browser.getTitle()).toEqual('Kogo | Log in');
-  // });
 });

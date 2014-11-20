@@ -138,9 +138,9 @@ module.exports = function (router, passport) {
 
   router.post(
     '/login',
-    passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
+    passport.authenticate('local'),
     function (req, res) {
-      res.redirect('/');
+      res.status(200).json('OK');
     }
   );
 

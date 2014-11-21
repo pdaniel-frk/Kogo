@@ -1,5 +1,5 @@
 
-Kogo API Contributor Agreement
+Kogo Contributor Agreement
 
 These terms apply to your contribution of materials to a product or project owned or managed by us ('project'), and set out the intellectual property rights you grant to us (HedonSoftware Limited) in the contributed materials. These terms will prevail over any other terms in any other license from us
 to you, including our EULA. If this contribution is on behalf of a company, the term 'you' will also mean the company you identify below. If you agree to be bound by these terms please feel free to contribute, otherwise please DO NOT contribute.

@@ -42,8 +42,8 @@ describe('Kogo login screen', function () {
     element(by.model('form.username')).clear();
     element(by.model('form.password')).clear();
 
-    element(by.model('form.username')).sendKeys('dahlberg.reindl');
-    element(by.model('form.password')).sendKeys('abc');
+    element(by.model('form.username')).sendKeys('demo');
+    element(by.model('form.password')).sendKeys('demo');
     element(by.css('form .footer button')).click();
 
     expect(browser.getTitle()).toEqual('Kogo | Dashboard');

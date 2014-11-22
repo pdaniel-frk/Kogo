@@ -16,7 +16,7 @@ exports.config = {
     'board-filters.js',
     'board-create-ticket-modal.js',
     'board-create-sprint-modal.js',
-    'planning.js'
+    //'planning.js'
   ],
   capabilities : {
     browserName : 'chrome',

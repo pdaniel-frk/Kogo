@@ -46,7 +46,7 @@ describe('Board overview screen', function () {
 
     element.all(by.repeater('modalUser in $select.items'))
       .then(function(arr) {
-        expect(arr.length).toBe(99);
+        expect(arr.length).toBe(100);
       });
   });
 

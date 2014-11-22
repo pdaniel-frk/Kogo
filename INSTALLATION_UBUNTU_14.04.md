@@ -152,6 +152,12 @@ create logs directory:
 mkdir logs
 ```
 
+create temp uploads directory:
+
+```
+mkdir /tmp/kogo
+```
+
 and start node server:
 
 ```

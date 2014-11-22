@@ -19,9 +19,7 @@ var app = angular.module(
     'ui.select',
     'Mac',
 
-    // ui-bootstrap
     'ui.bootstrap',
-    //'ui.templates',
 
     'BoardsListController',
     'BoardController',

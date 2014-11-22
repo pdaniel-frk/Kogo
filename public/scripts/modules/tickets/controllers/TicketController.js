@@ -124,7 +124,7 @@ ticketsController.controller(
       // ---------- MODAL RELEATED FUNCTIONS ---------
       // ---------------------------------------------
 
-      $scope.showEditTicketModal = function (modalSelector) {
+      $scope.showEditTicketModal = function () {
 
         var modalInstance = $modal.open({
           templateUrl: 'static/views/tickets/edit.html',

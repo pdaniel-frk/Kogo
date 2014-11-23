@@ -21,6 +21,7 @@ Nodejs installation
 - unpack the archive
 - cd into unpacked directory
 - run following
+
 ```
 ./configure
 make
@@ -150,12 +151,6 @@ create logs directory:
 
 ```
 mkdir logs
-```
-
-create temp uploads directory:
-
-```
-mkdir /tmp/kogo
 ```
 
 and start node server:

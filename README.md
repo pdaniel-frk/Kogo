@@ -47,6 +47,19 @@ Installation guides
 
 For installation guides please refer to files prefixed with 'INSTALLATION_'.
 
+Login credentials
+-----------------
+
+Kogo:
+
+username - demo
+password - demo
+
+Kogo Admin:
+
+username - admin
+password - admin
+
 Contributing
 ------------
 
